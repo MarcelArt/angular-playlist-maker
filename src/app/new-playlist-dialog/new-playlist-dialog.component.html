@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Create new playlist</h2>
+  <mat-form-field>
+    <input matInput [(ngModel)]="name" placeholder="Playlist name" required="true">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="description" placeholder="Description" required="true"></textarea>
+  </mat-form-field>
+  <div class="song-list" *ngFor="let song of songs">
+    <mat-form-field>
+      <input matInput placeholder="Song title" required="true" [(ngModel)]="song.title">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Artist" required="true"[(ngModel)]="song.artist">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Duration" required="true" type="number"[(ngModel)]="song.duration">
+      <span matSuffix>minutes</span>
+    </mat-form-field>
+    <button mat-mini-fab color="primary" (click)="addSong()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div style="display: flex; flex-direction: row; align-self: center;">
+    <button mat-raised-button color="warn" style="margin: 10px;" (click)="onCancel()">CANCEL</button>
+    <button mat-raised-button color="primary" style="margin: 10px;" (click)="onSubmit()">SUBMIT</button>
+  </div>
+</div>
